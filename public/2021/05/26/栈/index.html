@@ -1,0 +1,406 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="定义       栈是一种特殊的线性表，限定插入和删除操作只能在表的一端（通常是表尾）进行。（又称为后进先出的线性表，简称LIFO结构）。  栈是仅在表尾进行擦汗如，删除操作的线性表。表尾称为栈顶To（an端）p;表头称为栈底Base（a1端）。  插入元素到栈顶（表尾）的操作，称为入栈[压栈]（push）。从栈顶（表尾）删除最后一个元素的操作，称为出栈[弹">
+<meta property="og:type" content="article">
+<meta property="og:title" content="栈">
+<meta property="og:url" content="https://king23.top/2021/05/26/%E6%A0%88/index.html">
+<meta property="og:site_name" content="Forever King">
+<meta property="og:description" content="定义       栈是一种特殊的线性表，限定插入和删除操作只能在表的一端（通常是表尾）进行。（又称为后进先出的线性表，简称LIFO结构）。  栈是仅在表尾进行擦汗如，删除操作的线性表。表尾称为栈顶To（an端）p;表头称为栈底Base（a1端）。  插入元素到栈顶（表尾）的操作，称为入栈[压栈]（push）。从栈顶（表尾）删除最后一个元素的操作，称为出栈[弹">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/02513c683fc547acb422d984db360460~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/178a7be1d7514f9b84b7701fe12206df~tplv-k3u1fbpfcp-watermark.image">
+<meta property="article:published_time" content="2021-05-26T05:09:32.000Z">
+<meta property="article:modified_time" content="2021-07-05T03:07:06.828Z">
+<meta property="article:author" content="不闻钟">
+<meta property="article:tag" content="Study">
+<meta property="article:tag" content="栈">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/02513c683fc547acb422d984db360460~tplv-k3u1fbpfcp-watermark.image"><title>栈 | Forever King</title><link ref="canonical" href="https://king23.top/2021/05/26/%E6%A0%88/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Forever King</div><div class="header-banner-info__subtitle">Live a good life meet slowly.</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">栈</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-26</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-07-05</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body">
+        <h3 id="定义"   >
+          <a href="#定义" class="heading-link"><i class="fas fa-link"></i></a><a href="#定义" class="headerlink" title="定义"></a>定义</h3>
+      <p>栈是一种特殊的线性表，限定插入和删除操作只能在表的一端（通常是表尾）进行。（又称为<strong>后进先出</strong>的线性表，简称LIFO结构）。</p>
+<blockquote>
+<p>栈是仅在表尾进行擦汗如，删除操作的线性表。表尾称为栈顶To（an端）p;表头称为栈底Base（a1端）。</p>
+</blockquote>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/02513c683fc547acb422d984db360460~tplv-k3u1fbpfcp-watermark.image" alt="image.png"><br>插入元素到栈顶（表尾）的操作，称为入栈[压栈]（push）。从栈顶（表尾）删除最后一个元素的操作，称为出栈[弹栈]（pop）。</p>
+
+        <h4 id="储存结构"   >
+          <a href="#储存结构" class="heading-link"><i class="fas fa-link"></i></a><a href="#储存结构" class="headerlink" title="储存结构"></a>储存结构</h4>
+      <p>作为一种线性表，栈既可以用顺序栈，也可以用链栈储存。但是顺序栈更常见。<br><br>栈与一般线性表的区别就在于运算规则不同<br>因为运算规则是只能在栈顶运算，后进先出。我们的首要任务就是编写入栈和出栈函数。</p>
+
+        <h3 id="栈的经典应用"   >
+          <a href="#栈的经典应用" class="heading-link"><i class="fas fa-link"></i></a><a href="#栈的经典应用" class="headerlink" title="栈的经典应用"></a>栈的经典应用</h3>
+      
+        <h5 id="进制转化"   >
+          <a href="#进制转化" class="heading-link"><i class="fas fa-link"></i></a><a href="#进制转化" class="headerlink" title="进制转化"></a>进制转化</h5>
+      <p>N是我们输入的某进制数（就当作10进制吧），要转化为另一个进制（8进制），N除以8，余数保留在栈中，得到的结果存在N接着与8整除运算，直到<code>N / 8 == 0</code>，最后把栈中数据取出即可。因为结果是从低到高纪录，先将结果全部入栈之后再全部出栈，正好用到了栈的规则，先进后出的特性</p>
+
+        <h5 id="括号匹配"   >
+          <a href="#括号匹配" class="heading-link"><i class="fas fa-link"></i></a><a href="#括号匹配" class="headerlink" title="括号匹配"></a>括号匹配</h5>
+      <p>在编写代码的时候，经常会用到两种括号：圆括号 “()” 和大括号 “{}” 。不管使用哪种括号，程序编译没有问题的其中一个重要因素就是所使用的括号是否能够匹配上，可以利用栈判断括号是否匹配。从控制台正常输入一串括号，在输入期间，检测到左括号，进栈，右括号就要和和左括号比较，如何比较呢，我们可以把右括号翻转，说白了就是遇见右括号就让它变成指定的左括号形式，如：<code>if(ch == &#39;&#125;&#39;)  </code>这时就可以把ch改成’{‘或者’(‘再和栈中元素进行比较。右边括号(),})就出栈进行比较，看是否输入一对括号，如果匹配，就进行下一个比较，否则return，没有再比较的必要了。》&lt;br<br>错误情况</p>
+<ul>
+<li>当遇到某一个右括号时，栈已空，说明目前<strong>右括号多余左括号</strong></li>
+<li>从栈中弹出的做括号与当前检验的有括号类型不同，说明括号交叉了，不合法</li>
+<li>算数表达式输入完毕，但栈中还没有匹配的左括号，说明左括号多余有括号  </li>
+</ul>
+
+        <h5 id="表达式求值"   >
+          <a href="#表达式求值" class="heading-link"><i class="fas fa-link"></i></a><a href="#表达式求值" class="headerlink" title="表达式求值"></a>表达式求值</h5>
+      <p>这里的运算表达式是后缀表达式（所有的运算符都在运算数字的后面出现），包括了：</p>
+<ul>
+<li>操作数：常量，变量</li>
+<li>运算符：算数运算符，关系运算符和逻辑运算符</li>
+<li>界限符：左右括号与表达式结束符（表达的结束符’#’,与虚设的表达起始符’#‘</li>
+</ul>
+<p>为了实现表达式求值，需要两个栈。一个算符栈是OPTR，用于寄存运算符。另一个是操作数栈OPND，用于寄存运算数和运算结果。<br><br>求值的过程是自左到右扫描表达式的每一个字符。当扫描到的是运算数时，压入栈OPND。当扫描到是运算符时，若这个运算符比OPTR栈顶的运算符优先级高，则入栈OPTR，继续向后处理。若这个运算符比OPTR栈顶运算符优先级低，则从OPND栈中弹出两个运算数，从栈OPTR中弹出栈顶运算符进行运算，并将运算结果压入OPND。继续处理直到遇到结束符。</p>
+<p>你也可以嫞栈将平时使用的表达式转化为后缀表达式。</p>
+
+        <h3 id="栈的实现"   >
+          <a href="#栈的实现" class="heading-link"><i class="fas fa-link"></i></a><a href="#栈的实现" class="headerlink" title="栈的实现"></a>栈的实现</h3>
+      <p>关于栈的抽象数据类型的类型定义：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/178a7be1d7514f9b84b7701fe12206df~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">InitStack(&amp;S);<span class="comment">//构造一个空栈</span></span><br><span class="line">DestroyStack(&amp;S);<span class="comment">//初始条件：栈S已存在    操作结果：栈S被销毁</span></span><br><span class="line">StackEmpty(S);<span class="comment">//初始条件：栈S乙存在    操作结果：若栈为空，返回true否则false</span></span><br><span class="line">StackLength(S);<span class="comment">//初始条件：栈S已存在    操作结果：返回S元素的个数，即栈的长度</span></span><br><span class="line">GetTop(S,&amp;e);<span class="comment">//初始条件：栈S存在且非空     操作结果：用e返回栈S的栈顶元素</span></span><br><span class="line">ClearStack(&amp;S);<span class="comment">//初始条件：栈S已存在    操作结果：将S清为空栈</span></span><br><span class="line">Push(&amp;S,e);<span class="comment">//初始条件：栈S已存在       操作结果：插入元素e成为新的栈顶元素</span></span><br><span class="line">Pop(&amp;S,e);<span class="comment">//初始条件：栈S已存在        操作结果：删除栈S的栈顶元素an，并是用e返回其值</span></span><br></pre></td></tr></table></div></figure>
+<p>栈也分为顺序栈和链栈，顺序栈同一般线性表的顺序储存结构完全相同[利用一组连续的储存单元一次存放自栈底到栈顶的数据元素，一般栈底在低地址端]，有top指针，指示栈顶元素在顺序栈的位置（为了方便操作，通常top指针指示真正的栈顶元素之上的下标地址），base指针，指示栈底元素在顺序栈的位置。</p>
+
+        <h4 id="顺序栈实现"   >
+          <a href="#顺序栈实现" class="heading-link"><i class="fas fa-link"></i></a><a href="#顺序栈实现" class="headerlink" title="顺序栈实现"></a>顺序栈实现</h4>
+      <p>结构体：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">typedef struct&#123;</span><br><span class="line">    StackElemType *base;<span class="comment">//栈底指针</span></span><br><span class="line">    StackElemType *top;<span class="comment">//栈顶指针</span></span><br><span class="line">    int stacksize;<span class="comment">//栈的最大容量</span></span><br><span class="line">&#125;SqStack;</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+<p>顺序栈的初始化：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Status <span class="function"><span class="title">InitStack</span>(<span class="params">SqStack &amp;S</span>)</span>&#123;<span class="comment">//构造一个空栈</span></span><br><span class="line">    <span class="comment">//S.base = new StackElemType[MAXSIZE];//c++</span></span><br><span class="line">    S.base = (StackElemType*) malloc(sizeof(StackElemType) * MAXSIZE);<span class="comment">//指向首元素也就是栈底</span></span><br><span class="line">    <span class="keyword">if</span> (!S.base) exit(<span class="number">0</span>);<span class="comment">//储存分配失败</span></span><br><span class="line">    S.top = S.base;<span class="comment">//初始时栈底指针等于栈顶指针</span></span><br><span class="line">    S.stacksize = MAXSIZE;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>判断栈是否为空</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始条件：栈S乙存在    操作结果：若栈为空，返回true否则false</span></span><br><span class="line">bool <span class="function"><span class="title">StackEmpty</span>(<span class="params">SqStack S</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(S.top == S.base)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>获取栈的元素个数（长度）：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始条件：栈S已存在    操作结果：返回S元素的个数，即栈的长度</span></span><br><span class="line">int <span class="function"><span class="title">StackLength</span>(<span class="params">SqStack S</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!S.base)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> S.top - S.base;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+<p>获取栈顶元素：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始条件：栈S存在且非空     操作结果：用e返回栈S的栈顶元素</span></span><br><span class="line">Status <span class="function"><span class="title">GetTop</span>(<span class="params">SqStack S,StackElemType &amp;e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!S.base)<span class="comment">//栈是否存在</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (StackEmpty(S))</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;<span class="comment">//栈是否为空</span></span><br><span class="line">    <span class="comment">//e = S.base[S.top - S.base];</span></span><br><span class="line">    e = *(S.top - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p><strong>入栈</strong>：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始条件：栈S已存在       操作结果：插入元素e成为新的栈顶元素</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 1.判断是否栈满，若满则出错</span></span><br><span class="line"><span class="comment"> * 2.元素e压入栈</span></span><br><span class="line"><span class="comment"> * 3.栈顶指针+1</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Status <span class="function"><span class="title">Push</span>(<span class="params">SqStack &amp;S,StackElemType e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(S.top - S.base == S.stacksize)<span class="comment">//栈满，在栈中头尾指针相减时中间的空间</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="comment">//也可以增加内存</span></span><br><span class="line">    S.top++;</span><br><span class="line">    *S.top = e;</span><br><span class="line">    <span class="comment">//*S.top++ = e;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p><strong>出栈</strong>：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始条件：栈S已存在        操作结果：删除栈S的栈顶元素an，并是用e返回其值</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 1.判断栈是否为空，若为空则出错（下溢</span></span><br><span class="line"><span class="comment"> * 2.获取栈顶元素e</span></span><br><span class="line"><span class="comment"> * 3.栈顶指针-1</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Status <span class="function"><span class="title">Pop</span>(<span class="params">SqStack &amp;S,StackElemType e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(StackEmpty(S))<span class="comment">//if(S.top == S.base)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;<span class="comment">//栈是否为空</span></span><br><span class="line">    S.top--;</span><br><span class="line">    e = *S.top;</span><br><span class="line">    <span class="comment">//e = *--S.top;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>遍历：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="function"><span class="title">Travel</span>(<span class="params">SqStack S</span>)</span>&#123;</span><br><span class="line">    StackElemType *temp;<span class="comment">//栈顶指针</span></span><br><span class="line">    temp = S.base;</span><br><span class="line">    <span class="keyword">while</span>(temp != S.top)</span><br><span class="line">        cout &lt;&lt; *temp++ &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="链栈的实现"   >
+          <a href="#链栈的实现" class="heading-link"><i class="fas fa-link"></i></a><a href="#链栈的实现" class="headerlink" title="链栈的实现"></a>链栈的实现</h4>
+      <p>链栈就是运算受限的单链表，只能在链表的头部进行操作。所以结构和单链表时相同的。<br>栈的结构类型和单链表相同：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//结构体</span></span><br><span class="line">typedef  struct StackNode&#123;</span><br><span class="line">    StackElemType data;<span class="comment">//数据域</span></span><br><span class="line">    struct StackNode *next;</span><br><span class="line">&#125;StackNodeta,*LinkStack;</span><br></pre></td></tr></table></div></figure>
+<p>链表的头指针就是栈顶，而栈顶不需要头结点<br><br>不会出现栈满的情况，空栈相当于头指针指向空。<br>初始化：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bool <span class="function"><span class="title">InitStack</span>(<span class="params">LinkStack &amp;S</span>)</span>&#123;</span><br><span class="line">    S = NULL;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>判空：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Status <span class="function"><span class="title">StackEmpty</span>(<span class="params">LinkStack S</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(S == NULL)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+<p>入栈：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/入栈</span><br><span class="line"> Status <span class="function"><span class="title">PUSH</span>(<span class="params">LinkStack &amp;S,StackElemType e</span>)</span>&#123;</span><br><span class="line">    LinkStack p = (LinkStack) malloc(sizeof(StackNode);</span><br><span class="line">    <span class="comment">//LinkStack p = new StackNode;//生成新结点p</span></span><br><span class="line">    p-&gt;data = e;<span class="comment">//将新结点数据域设置为e</span></span><br><span class="line">    p-&gt;next = S;<span class="comment">//将新结点插入栈顶</span></span><br><span class="line">    S = p;<span class="comment">//修改栈顶指针</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>出栈：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//出栈</span></span><br><span class="line">Status <span class="function"><span class="title">Pop</span>(<span class="params">LinkStack &amp;S,StackElemType &amp;e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (S == NULL)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    e = S-&gt;data;<span class="comment">//将删除的元素存在e</span></span><br><span class="line">    LinkStack p = S;</span><br><span class="line">    S = S-&gt;next;</span><br><span class="line">    free(p);</span><br><span class="line">    <span class="comment">//delete p;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>取出栈顶元素：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//取栈顶元素</span></span><br><span class="line">StackElemType <span class="function"><span class="title">Gettop</span>(<span class="params">LinkStack S</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(S != NULL)</span><br><span class="line">        <span class="keyword">return</span> S-&gt;data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>遍历：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="function"><span class="title">Travel</span>(<span class="params">LinkStack &amp;S</span>)</span>&#123;</span><br><span class="line">    LinkStack p = S;</span><br><span class="line">    <span class="keyword">while</span>(p) &#123;</span><br><span class="line">        cout &lt;&lt; p-&gt;data &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>着就是栈的基础知识。</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://king23.top">不闻钟</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://king23.top/2021/05/26/%E6%A0%88/">https://king23.top/2021/05/26/%E6%A0%88/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://king23.top/tags/Study/">Study</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://king23.top/tags/%E6%A0%88/">栈</a></span></div><div class="post-reward reward"><div class="reward-button">富婆 饿饿 饭饭</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="https://ftp.bmp.ovh/imgs/2021/05/c94b7c01d6e33986.jpg"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="https://ftp.bmp.ovh/imgs/2021/05/cded0174eeb6c085.jpg"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/05/28/PAT%E4%B9%99%E7%BA%A71047/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">PAT乙级1047</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/05/26/PAT%E4%B9%99%E7%BA%A71045/"><span class="paginator-prev__text">PAT乙级1045</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">
+          定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%82%A8%E5%AD%98%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">
+          储存结构</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E7%BB%8F%E5%85%B8%E5%BA%94%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">
+          栈的经典应用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%8C%96"><span class="toc-number">2.0.1.</span> <span class="toc-text">
+          进制转化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D"><span class="toc-number">2.0.2.</span> <span class="toc-text">
+          括号匹配</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC"><span class="toc-number">2.0.3.</span> <span class="toc-text">
+          表达式求值</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">
+          栈的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%A0%88%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.1.</span> <span class="toc-text">
+          顺序栈实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.2.</span> <span class="toc-text">
+          链栈的实现</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://ftp.bmp.ovh/imgs/2021/04/97568392c68eaf01.png" alt="avatar"></div><p class="sidebar-ov-author__text">固执己见 一意孤行</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="tencent://message?nin=2530281837" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://juejin.cn/" target="_blank" rel="noopener" data-popover="掘金" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">掘</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">52</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">11</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">9</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>不闻钟</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">访问人数</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">浏览总量</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.xml';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.xml"></script></body></html>
